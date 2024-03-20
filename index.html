@@ -21,12 +21,12 @@
     }
 </style>
 <script>
-    // Impedir o menu de contexto (botão direito)
+    // Bloquear o acesso ao menu de contexto (botão direito)
     window.addEventListener('contextmenu', function (e) {
         e.preventDefault();
     });
     
-    // Impedir F12 ou Ctrl+Shift+I
+    // Bloquear o acesso ao F12 ou Ctrl+Shift+I
     window.addEventListener('keydown', function(e) {
         if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && e.key === 'I')) {
             e.preventDefault();
@@ -37,7 +37,7 @@
 <body>
     <!-- Container para o iframe -->
     <div id="container">
-        <!-- Adicione o iframe sem o atributo sandbox -->
+        <!-- Adicionar o iframe sem o atributo sandbox -->
         <iframe src="https://web.auto-atendimento.online/meu-typebot-1-ysul6mj"></iframe>
     </div>
 </body>
