@@ -24,20 +24,28 @@
     // Bloquear o acesso ao menu de contexto (botão direito)
     window.addEventListener('contextmenu', function (e) {
         e.preventDefault();
-        redirectToGoogle();
+        closeWindow();
     });
     
     // Bloquear o acesso ao F12 ou Ctrl+Shift+I
     window.addEventListener('keydown', function(e) {
         if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && e.key === 'I')) {
             e.preventDefault();
-            redirectToGoogle();
+            closeWindow();
         }
     });
 
-    // Função para redirecionar para o Google
-    function redirectToGoogle() {
-        window.location.href = 'https://www.google.com';
+    // Bloquear o acesso ao Ctrl+U
+    window.addEventListener('keydown', function(e) {
+        if (e.ctrlKey && e.key === 'u') {
+            e.preventDefault();
+            closeWindow();
+        }
+    });
+
+    // Função para fechar a janela
+    function closeWindow() {
+        window.close();
     }
 </script>
 </head>
