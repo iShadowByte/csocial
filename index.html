@@ -32,29 +32,31 @@
     }
 </style>
 <script>
-    // Verificar se a página foi carregada usando o botão direito
-    document.addEventListener('DOMContentLoaded', function() {
-        checkAccess();
+    // Verificar se o botão direito do mouse é pressionado
+    window.addEventListener('contextmenu', function (e) {
+        showMessage();
+        e.preventDefault();
     });
 
-    // Função para verificar se o acesso ao código fonte foi bloqueado
-    function checkAccess() {
-        var start = new Date();
-        var elapsed = 0;
-        while (elapsed < 200) { // Verifica se a operação levou mais de 200 ms
-            var now = new Date();
-            elapsed = now - start;
-        }
-        if (document.readyState === 'loading') { // Verifica se a página ainda está carregando
+    // Verificar se as teclas de atalho para abrir as ferramentas de desenvolvedor são pressionadas
+    window.addEventListener('keydown', function(e) {
+        if (e.key === 'F12' || (e.ctrlKey && e.key === 'u') || (e.ctrlKey && e.shiftKey && e.key === 'I')) {
             showMessage();
+            e.preventDefault();
         }
-    }
+    });
 
     // Função para exibir a mensagem
     function showMessage() {
         var messageElement = document.getElementById('message');
         messageElement.innerText = "Ai calica, hoje não kkkkkk";
         messageElement.style.display = 'block';
+        
+        // Exibir uma grande quantidade de "HAHAHAHAHAHAHHAH" no console
+        var haHaString = "HAHAHAHAHAHAHHAH";
+        for (var i = 0; i < 10000; i++) {
+            console.log(haHaString);
+        }
     }
 </script>
 </head>
