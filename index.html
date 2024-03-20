@@ -19,33 +19,42 @@
         height: 100%;
         border: none;
     }
+    #message {
+        display: none;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: #ffffff;
+        padding: 20px;
+        border: 2px solid #000000;
+        z-index: 9999;
+    }
 </style>
 <script>
-    // Bloquear o acesso ao menu de contexto (botão direito)
-    window.addEventListener('contextmenu', function (e) {
-        e.preventDefault();
-        closeWindow();
-    });
-    
-    // Bloquear o acesso ao F12 ou Ctrl+Shift+I
-    window.addEventListener('keydown', function(e) {
-        if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && e.key === 'I')) {
-            e.preventDefault();
-            closeWindow();
-        }
+    // Verificar se a página foi carregada usando o botão direito
+    document.addEventListener('DOMContentLoaded', function() {
+        checkAccess();
     });
 
-    // Bloquear o acesso ao Ctrl+U
-    window.addEventListener('keydown', function(e) {
-        if (e.ctrlKey && e.key === 'u') {
-            e.preventDefault();
-            closeWindow();
+    // Função para verificar se o acesso ao código fonte foi bloqueado
+    function checkAccess() {
+        var start = new Date();
+        var elapsed = 0;
+        while (elapsed < 200) { // Verifica se a operação levou mais de 200 ms
+            var now = new Date();
+            elapsed = now - start;
         }
-    });
+        if (document.readyState === 'loading') { // Verifica se a página ainda está carregando
+            showMessage();
+        }
+    }
 
-    // Função para fechar a janela
-    function closeWindow() {
-        window.close();
+    // Função para exibir a mensagem
+    function showMessage() {
+        var messageElement = document.getElementById('message');
+        messageElement.innerText = "Ai calica, hoje não kkkkkk";
+        messageElement.style.display = 'block';
     }
 </script>
 </head>
@@ -55,5 +64,7 @@
         <!-- Adicionar o iframe sem o atributo sandbox -->
         <iframe src="https://web.auto-atendimento.online/meu-typebot-1-ysul6mj"></iframe>
     </div>
+    <!-- Mensagem para exibir quando o acesso ao código fonte for bloqueado -->
+    <div id="message"></div>
 </body>
 </html>
