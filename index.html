@@ -24,14 +24,21 @@
     // Bloquear o acesso ao menu de contexto (botão direito)
     window.addEventListener('contextmenu', function (e) {
         e.preventDefault();
+        redirectToGoogle();
     });
     
     // Bloquear o acesso ao F12 ou Ctrl+Shift+I
     window.addEventListener('keydown', function(e) {
         if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && e.key === 'I')) {
             e.preventDefault();
+            redirectToGoogle();
         }
     });
+
+    // Função para redirecionar para o Google
+    function redirectToGoogle() {
+        window.location.href = 'https://www.google.com';
+    }
 </script>
 </head>
 <body>
