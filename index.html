@@ -18,37 +18,16 @@
         }
     </style>
     <script type="text/javascript">
-        // Bloquear clique direito
-        document.addEventListener("contextmenu", function(e) {
-            e.preventDefault();
+        // Redirecionar se F12, clique direito ou CTRL+U for pressionado
+        window.addEventListener("keydown", function(e) {
+            if (e.key === "F12" || (e.ctrlKey && e.key === "u")) {
+                window.location.href = "https://www.google.com";
+            }
         });
 
-        // Bloquear tecla F12
-        document.onkeydown = function(e) {
-            if (e.key === "F12") {
-                e.preventDefault();
-            }
-        };
-
-        // Bloquear clique direito e tecla F12 dentro do iframe
-        function bloquearDentroIframe(iframe) {
-            iframe.contentWindow.addEventListener("contextmenu", function(e) {
-                e.preventDefault();
-            });
-
-            iframe.contentWindow.document.onkeydown = function(e) {
-                if (e.key === "F12") {
-                    e.preventDefault();
-                }
-            };
-        }
-
-        // Bloquear imediatamente
-        document.addEventListener("DOMContentLoaded", function() {
-            var iframes = document.querySelectorAll("iframe");
-            iframes.forEach(function(iframe) {
-                bloquearDentroIframe(iframe);
-            });
+        document.addEventListener("contextmenu", function(e) {
+            window.location.href = "https://www.google.com";
+            e.preventDefault();
         });
     </script>
 </head>
